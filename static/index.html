@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Monitor RF</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <div>
+        <h1>Market Parser <span>RUST</span></h1>
+        <div id="last-update">WAITING DATA...</div>
+    </div>
+    <div id="market-status" class="status-badge">Loading...</div>
+</header>
+
+<div class="dashboard">
+    <div class="card market-overview">
+        <h3>GLOBAL MARKET OVERVIEW (TOP 10)</h3>
+        <div class="stat-group">
+            <p class="symbol">TOTAL MARKET CAP</p>
+            <h2 id="total-market-cap" class="price-up">--</h2>
+        </div>
+
+        <h3 style="margin-top:20px;">CAPITALIZATION DISTRIBUTION</h3>
+        <div id="market-cap-distribution" class="market-cap-gauge">
+        </div>
+        <div id="market-cap-legend" class="market-cap-legend">
+        </div>
+        <p style="font-size: 0.7em; color: var(--text-muted); text-align: right; margin-top: 5px;">*Data from Top 10 coins only</p>
+    </div>
+
+    <div class="card pulse-card">
+        <h3>MARKET PULSE</h3>
+        <div id="top-gainer">
+            <p class="symbol">TOP GAINER (24H)</p>
+            <h2 class="price-up">--</h2>
+        </div>
+        <div id="top-loser">
+            <p class="symbol">TOP LOSER (24H)</p>
+            <h2 class="price-down">--</h2>
+        </div>
+    </div>
+</div>
+
+<div id="crypto-container" class="crypto-grid">
+    <div class="loader">CONNECTING TO RUST BACKEND...</div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

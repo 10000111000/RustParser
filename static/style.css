@@ -1,0 +1,230 @@
+:root {
+    --bg-color: #0d1117;
+    --card-bg: #161b22;
+    --text-main: #c9d1d9;
+    --text-muted: #8b949e;
+    --neon-green: #2ea043;
+    --neon-red: #da3633;
+    --glow-green: 0 0 10px rgba(46, 160, 67, 0.4);
+    --glow-red: 0 0 10px rgba(218, 54, 51, 0.4);
+    --border: #30363d;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+    margin: 0 0 5px 0;
+}
+
+h1 span {
+    font-size: 0.5em;
+    color: var(--text-muted);
+}
+
+h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: var(--text-muted);
+}
+
+.status-badge {
+    padding: 5px 15px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.bullish {
+    color: var(--neon-green);
+    border-color: var(--neon-green);
+    box-shadow: var(--glow-green);
+}
+
+.bearish {
+    color: var(--neon-red);
+    border-color: var(--neon-red);
+    box-shadow: var(--glow-red);
+}
+
+.dashboard {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+}
+
+@media (max-width: 900px) {
+    .dashboard { grid-template-columns: 1fr; }
+}
+
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 20px;
+}
+
+.pulse-card #top-loser {
+    margin-top: 20px;
+}
+
+.crypto-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.crypto-card {
+    background: var(--card-bg);
+    border-left: 3px solid var(--border);
+    padding: 15px;
+    transition: transform 0.2s;
+}
+
+.crypto-card:hover {
+    transform: translateY(-2px);
+    background: #1c2128;
+}
+
+.price-up {
+    color: var(--neon-green);
+    text-shadow: 0 0 5px rgba(46, 160, 67, 0.2);
+    border-left-color: var(--neon-green) !important;
+}
+
+.price-down {
+    color: var(--neon-red);
+    text-shadow: 0 0 5px rgba(218, 54, 51, 0.2);
+    border-left-color: var(--neon-red) !important;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.symbol {
+    color: var(--text-muted);
+    font-size: 0.9em;
+}
+
+.price {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.loader {
+    text-align: center;
+    color: var(--neon-green);
+    animation: blink 1s infinite;
+}
+
+#last-update {
+    font-size: 0.8em;
+    color: var(--text-muted);
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+
+.market-cap-gauge {
+    display: flex;
+    width: 100%;
+    height: 5px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    border: 1px solid var(--border);
+}
+
+.market-cap-segment {
+    height: 100%;
+    position: relative;
+    transition: width 0.5s ease;
+    cursor: help;
+}
+
+.market-cap-segment::before {
+    content: attr(data-label);
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--card-bg);
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-size: 0.7em;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.2s;
+    pointer-events: none;
+    border: 1px solid var(--border);
+}
+
+.market-cap-segment:hover::before {
+    opacity: 1;
+}
+
+.price-range-container {
+    margin-top: 10px;
+}
+
+.price-range-bar {
+    width: 100%;
+    height: 6px;
+    background: var(--border);
+    border-radius: 3px;
+    position: relative;
+    margin: 5px 0 0 0;
+}
+
+.price-indicator {
+    position: absolute;
+    top: -5px;
+    width: 15px;
+    height: 15px;
+    background-color: var(--text-main);
+    border: 3px solid var(--card-bg);
+    border-radius: 50%;
+    transition: left 0.5s ease;
+    transform: translateX(-50%);
+    box-shadow: 0 0 8px var(--text-main);
+}
+
+.range-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.7em;
+    color: var(--text-muted);
+    margin-top: 5px;
+}
+
+.range-labels .high {
+    color: var(--neon-green);
+}
+
+.range-labels .low {
+    color: var(--neon-red);
+}
